@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Risk Predictor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .form-container { padding: 40px; }
+
+        .form-group { margin-bottom: 25px; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .flash-error {
+            background: #fee;
+            color: #c33;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #c33;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f4ff;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>🏥 Insurance Risk Predictor</h1>
+        <p>Calculate your insurance risk score and premium</p>
+    </div>
+
+    <div class="form-container">
+
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <div class="form-group">
+                <label>📅 Age</label>
+                <input type="number" name="age"
+                       value="{{ age if age else '' }}"
+                       min="18" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label>💰 Income</label>
+                <input type="number" name="income"
+                       value="{{ income if income else '' }}"
+                       min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label>🚬 Smoking</label>
+                <select name="smoking">
+                    <option value="no" {% if smoking == 'no' %}selected{% endif %}>No</option>
+                    <option value="yes" {% if smoking == 'yes' %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>🚗 Vehicle</label>
+                <select name="vehicle">
+                    <option value="normal" {% if vehicle == 'normal' %}selected{% endif %}>Normal</option>
+                    <option value="suv" {% if vehicle == 'suv' %}selected{% endif %}>SUV</option>
+                    <option value="sports" {% if vehicle == 'sports' %}selected{% endif %}>Sports</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>📋 Past Claims</label>
+                <input type="number" name="claims"
+                       value="{{ claims if claims else '0' }}"
+                       min="0" max="10" required>
+            </div>
+
+            <button type="submit">Calculate Risk →</button>
+
+        </form>
+
+        <div class="info-box">
+            ℹ️ Risk is calculated using age, income, claims, smoking, and vehicle type.
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

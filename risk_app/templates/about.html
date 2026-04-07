@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - Insurance Risk Predictor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .factor-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .factor-list li {
+            padding: 10px;
+            border-left: 3px solid #667eea;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>About This Tool</h1>
+            <p>Understanding your insurance risk assessment</p>
+        </div>
+        
+        <div class="content">
+            <h2>How Risk is Calculated</h2>
+            <p>Our risk assessment algorithm considers multiple factors to determine your insurance risk score (0-100):</p>
+            
+            <ul class="factor-list">
+                <li><strong>Age:</strong> Younger drivers (under 25) have higher risk (+20 points)</li>
+                <li><strong>Smoking:</strong> Smokers receive a +30 point penalty</li>
+                <li><strong>Past Claims:</strong> More claims mean higher risk (up to +30 points)</li>
+                <li><strong>Income:</strong> Lower income brackets add +5 to +10 points</li>
+                <li><strong>Vehicle Type:</strong> Sports cars (+25), SUVs (+10), Normal (0)</li>
+            </ul>
+            
+            <h2>Risk Categories</h2>
+            <p><strong>Low Risk (0-29):</strong> Standard coverage with competitive premiums<br>
+            <strong>Medium Risk (30-59):</strong> Limited coverage options with moderate premiums<br>
+            <strong>High Risk (60-100):</strong> Specialized coverage required with higher premiums</p>
+            
+            <h2>Premium Calculation</h2>
+            <p>Base premium: ₹5,000 + (Risk Score × ₹120) + additional risk combination adjustments.</p>
+            
+            <a href="/" class="btn">← Back to Calculator</a>
+        </div>
+    </div>
+</body>
+</html>
